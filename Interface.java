@@ -1,16 +1,12 @@
 
+import java.awt.Color;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.io.BufferedWriter;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.FileReader;
 import java.io.IOException;
-import javax.swing.table.*;
-import java.awt.*;  
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,7 +16,7 @@ import java.awt.*;
  *
  * @author hamza
  */
-public class Interface extends javax.swing.JFrame{
+public class Interface extends javax.swing.JFrame {
 
     /**
      * Creates new form Interface
@@ -38,7 +34,7 @@ public class Interface extends javax.swing.JFrame{
         Panneau.setText("SAISIR UN NOUVEAU VOL :");
     }
 
-     void CreateColumns() {
+    final void CreateColumns() {
         tblmodel = (DefaultTableModel) Table.getModel();
         tblmodel.addColumn("Numéro_Vol");
         tblmodel.addColumn("Nom_Compagnie");
@@ -48,9 +44,8 @@ public class Interface extends javax.swing.JFrame{
         tblmodel.addColumn("Nombre_Personnel");
         tblmodel.addColumn("Total_Personnes");
         tblmodel.addColumn("Vol_Direct");
-
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,14 +87,10 @@ public class Interface extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AIRPORT DATA BASE");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
+        this.getContentPane().setBackground(Color.getHSBColor(203, 43, 91));
         Table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
+                new Object[][]{},
+                new String[]{}
         ));
         jScrollPane1.setViewportView(Table);
 
@@ -283,7 +274,7 @@ public class Interface extends javax.swing.JFrame{
             }
         });
 
-        Select.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Général", "Nom_Compagnie", "Date_Depart", "Ville_Arrivee", "Nb_Passagers", "Nb_Personnel", "Total_Personnes" }));
+        Select.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Général", "Nom_Compagnie", "Date_Depart", "Ville_Arrivee", "Nb_Passagers", "Nb_Personnel", "Total_Personnes"}));
 
         FiltreDirect.setText("Vols directs");
         FiltreDirect.addActionListener(new java.awt.event.ActionListener() {
@@ -302,121 +293,121 @@ public class Interface extends javax.swing.JFrame{
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(8, 8, 8)
-                                .addComponent(RechercheNumVolText, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(FiltreDirect)
-                                .addGap(12, 12, 12)
-                                .addComponent(FiltreEscale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Import)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Export))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(RechercheLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(RechercheText, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                                .addComponent(Supprimer)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Modifier)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Jour, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(Mois, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(Annee, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(DatedepLabel))
-                                .addComponent(Voldirect)
-                                .addComponent(Numvol)
-                                .addComponent(NomComp)
-                                .addComponent(VilleArrivee)
-                                .addComponent(NbPass, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(17, 17, 17)
-                                    .addComponent(Ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(12, 12, 12)
-                                    .addComponent(Enregistrer)
-                                    .addGap(12, 12, 12)
-                                    .addComponent(Annuler)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(Panneau, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(NbPers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Quitter, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                .addComponent(jLabel1)
+                                                                .addGap(8, 8, 8)
+                                                                .addComponent(RechercheNumVolText, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(FiltreDirect)
+                                                                .addGap(12, 12, 12)
+                                                                .addComponent(FiltreEscale)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(Import)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(Export))
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                .addGap(41, 41, 41)
+                                                                .addComponent(RechercheLabel)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(Select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(RechercheText, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                                                .addComponent(Supprimer)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(Modifier)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addGroup(layout.createSequentialGroup()
+                                                                        .addComponent(Jour, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(Mois, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(Annee, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(DatedepLabel))
+                                                                .addComponent(Voldirect)
+                                                                .addComponent(Numvol)
+                                                                .addComponent(NomComp)
+                                                                .addComponent(VilleArrivee)
+                                                                .addComponent(NbPass, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGroup(layout.createSequentialGroup()
+                                                                        .addGap(17, 17, 17)
+                                                                        .addComponent(Ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGap(12, 12, 12)
+                                                                        .addComponent(Enregistrer)
+                                                                        .addGap(12, 12, 12)
+                                                                        .addComponent(Annuler)))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(32, 32, 32)
+                                                                .addComponent(Panneau, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(NbPers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(Quitter, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Export)
-                    .addComponent(Import)
-                    .addComponent(RechercheNumVolText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FiltreEscale)
-                    .addComponent(FiltreDirect))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(Quitter))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(RechercheLabel)
-                                    .addComponent(RechercheText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Modifier)
-                                    .addComponent(Supprimer)
-                                    .addComponent(Select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(33, 33, 33))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Panneau)
-                        .addGap(18, 18, 18)
-                        .addComponent(Numvol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NomComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Jour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Mois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Annee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DatedepLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VilleArrivee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NbPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NbPers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Voldirect)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Ajouter)
-                            .addComponent(Enregistrer)
-                            .addComponent(Annuler))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                        .addComponent(Export)
+                                        .addComponent(Import)
+                                        .addComponent(RechercheNumVolText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(FiltreEscale)
+                                        .addComponent(FiltreDirect))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addGap(43, 43, 43)
+                                                                .addComponent(Quitter))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(RechercheLabel)
+                                                                        .addComponent(RechercheText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(Modifier)
+                                                                        .addComponent(Supprimer)
+                                                                        .addComponent(Select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(33, 33, 33))))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(Panneau)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Numvol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(NomComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(Jour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(Mois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(Annee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(DatedepLabel))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(VilleArrivee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(NbPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(NbPers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(Voldirect)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(Ajouter)
+                                                        .addComponent(Enregistrer)
+                                                        .addComponent(Annuler))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
 
         pack();
@@ -450,7 +441,6 @@ public class Interface extends javax.swing.JFrame{
     private void VoldirectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoldirectActionPerformed
         // TODO add your handling code here:
 
-
     }//GEN-LAST:event_VoldirectActionPerformed
 
     private void NumvolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumvolActionPerformed
@@ -459,7 +449,7 @@ public class Interface extends javax.swing.JFrame{
 
     private void AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjouterActionPerformed
         // TODO add your handling code here:
-        
+
         //Recuperation des données
         String NumeroVol = Numvol.getText();
         String NomCompagnie = NomComp.getText();
@@ -473,7 +463,6 @@ public class Interface extends javax.swing.JFrame{
             bool = true;
         }
 
-        
         tblmodel = (DefaultTableModel) Table.getModel();
         int res = 1;
         //Check présence numéro de vol le même jour
@@ -489,12 +478,10 @@ public class Interface extends javax.swing.JFrame{
         if (res == -1) {
             //Message d'erreur
             JOptionPane.showMessageDialog(this, "Vol déja renseigné dans la base", "ERREUR", JOptionPane.ERROR_MESSAGE);
-        } 
-        else if ((NumeroVol.equals("")) || (NomCompagnie.equals("")) || (VilleArr.equals("")) || (NbPass.getText().equals("")) || (NbPers.getText().equals("")) || (Jour.getText().equals("")) || (Mois.getText().equals("") || (Annee.getText().equals("")))) {
+        } else if ((NumeroVol.equals("")) || (NomCompagnie.equals("")) || (VilleArr.equals("")) || (NbPass.getText().equals("")) || (NbPers.getText().equals("")) || (Jour.getText().equals("")) || (Mois.getText().equals("") || (Annee.getText().equals("")))) {
             //Message d'erreur
             JOptionPane.showMessageDialog(this, "Informations manquantes", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
-        } 
-        else {
+        } else {
             //Ajout des valeurs du formulaire dans le Table
             tblmodel.addRow(new Object[]{NumeroVol, NomCompagnie, date, VilleArr, NbPassagers, NbPersonnel, NbTotal, bool});
 
@@ -508,7 +495,6 @@ public class Interface extends javax.swing.JFrame{
             NbPass.setText("Nombre de Passagers");
             NbPers.setText("Nombre de Personnel");
             Voldirect.setSelected(false);
-            
 
         }
 
@@ -553,28 +539,30 @@ public class Interface extends javax.swing.JFrame{
         // TODO add your handling code here:
         int reponse = JOptionPane.showConfirmDialog(this, "Etes vous sur de vouloir supprimer cette ligne ?");
         if (reponse == JOptionPane.YES_OPTION) {
-           tblmodel = (DefaultTableModel) Table.getModel();
+            tblmodel = (DefaultTableModel) Table.getModel();
 
-            if (Table.getSelectedRowCount() ==1) {
+            if (Table.getSelectedRowCount() == 1) {
                 tblmodel.removeRow(Table.getSelectedRow());
-            } else JOptionPane.showMessageDialog(this, "Aucune ligne selectionée");
-                
+            } else {
+                JOptionPane.showMessageDialog(this, "Aucune ligne selectionée");
             }
-        
+
+        }
+
     }//GEN-LAST:event_SupprimerActionPerformed
 
     private void ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifierActionPerformed
         // TODO add your handling code here:
-        if (Table.getSelectedRow() == -1)
-            //Message d'erreur si aucune ligne n'est selectionnée
+        if (Table.getSelectedRow() == -1) //Message d'erreur si aucune ligne n'est selectionnée
+        {
             JOptionPane.showMessageDialog(this, "Aucune ligne séléctionnée", "ERREUR", JOptionPane.ERROR_MESSAGE);
-        else {
+        } else {
             //Gestion des boutons
             Ajouter.setEnabled(false);
             Supprimer.setEnabled(false);
             Enregistrer.setEnabled(true);
             Annuler.setEnabled(true);
-            
+
             //Desactivation de la table pour ne pas affecter les modifs à une autre ligne
             Table.setEnabled(false);
 
@@ -612,7 +600,7 @@ public class Interface extends javax.swing.JFrame{
 
     private void EnregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnregistrerActionPerformed
         // TODO add your handling code here:
-  
+
         int reponse = JOptionPane.showConfirmDialog(this, "Etes vous sur de vouloir apporter ces modifications ?");
         if (reponse == JOptionPane.YES_OPTION) {
 
@@ -624,23 +612,22 @@ public class Interface extends javax.swing.JFrame{
             int NbPassagers = Integer.parseInt(NbPass.getText());
             int NbPersonnel = Integer.parseInt(NbPers.getText());
 
-
             //Check de toutes les informations avant modification
             int res = 1;
             for (int r = 0; r < Table.getRowCount(); r++) {
-            //Comparaison des valeurs renseignées avec les valeurs dans la base sauf la ligne à modifier
-            if (NumeroVol.equals(Table.getValueAt(r, 0)) && (date.equals(Table.getValueAt(r, 2))) && r != Table.getSelectedRow()) res = -1;
+                //Comparaison des valeurs renseignées avec les valeurs dans la base sauf la ligne à modifier
+                if (NumeroVol.equals(Table.getValueAt(r, 0)) && (date.equals(Table.getValueAt(r, 2))) && r != Table.getSelectedRow()) {
+                    res = -1;
+                }
             }
             if (res == -1) {
                 //Message d'erreur
                 JOptionPane.showMessageDialog(this, "Vol déja renseigné dans la base", "ERREUR", JOptionPane.ERROR_MESSAGE);
 
-            }
-            else if ((NumeroVol.equals("")) || (NomCompagnie.equals("")) || (VilleArr.equals("")) || (NbPass.getText().equals("")) || (NbPers.getText().equals("")) || (Jour.getText().equals("")) || (Mois.getText().equals("") || (Annee.getText().equals("")))) {
+            } else if ((NumeroVol.equals("")) || (NomCompagnie.equals("")) || (VilleArr.equals("")) || (NbPass.getText().equals("")) || (NbPers.getText().equals("")) || (Jour.getText().equals("")) || (Mois.getText().equals("") || (Annee.getText().equals("")))) {
                 //Message d'erreur
                 JOptionPane.showMessageDialog(this, "Informations manquantes", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
-            } 
-            else {
+            } else {
                 //Affectation du formulaire à la Table
                 Table.setValueAt(NumeroVol, Table.getSelectedRow(), 0);
                 Table.setValueAt(NomCompagnie, Table.getSelectedRow(), 1);
@@ -649,16 +636,14 @@ public class Interface extends javax.swing.JFrame{
                 Table.setValueAt(NbPassagers, Table.getSelectedRow(), 4);
                 Table.setValueAt(NbPersonnel, Table.getSelectedRow(), 5);
                 Table.setValueAt(NbPersonnel + NbPassagers, Table.getSelectedRow(), 6);
-                
+
                 if (Voldirect.isSelected()) {
                     Table.setValueAt(true, Table.getSelectedRow(), 7);
-                } 
-                else {
+                } else {
                     Table.setValueAt(false, Table.getSelectedRow(), 7);
                 }
 
                 //Actualisation des données dans notre model 
-                DefaultTableModel tblmodel = (DefaultTableModel) Table.getModel();
                 tblmodel.fireTableDataChanged();
 
                 //Gestion du panneau
@@ -683,77 +668,57 @@ public class Interface extends javax.swing.JFrame{
 
                 //Réactivation de la selection de la table
                 Table.setEnabled(true);
-
             }
- 
         }
-        
-
 
     }//GEN-LAST:event_EnregistrerActionPerformed
 
     private void JourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JourMouseClicked
         // TODO add your handling code here:
-        if (Jour.getText().equals("JJ"))
+        if (Jour.getText().equals("JJ")) {
             Jour.setText(null);
+        }
     }//GEN-LAST:event_JourMouseClicked
 
     private void MoisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoisMouseClicked
         // TODO add your handling code here:
-        if (Mois.getText().equals("MM"))
+        if (Mois.getText().equals("MM")) {
             Mois.setText(null);
+        }
     }//GEN-LAST:event_MoisMouseClicked
 
     private void AnneeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AnneeMouseClicked
         // TODO add your handling code here:
-        if (Annee.getText().equals("AAAA"))
+        if (Annee.getText().equals("AAAA")) {
             Annee.setText(null);
+        }
     }//GEN-LAST:event_AnneeMouseClicked
 
     private void ExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportActionPerformed
-        // TODO add your handling code here:
+
+        //Test présence d'informations dans la table
         if (Table.getRowCount() == 0) {
-            
-            JOptionPane.showMessageDialog(this, "Aucune ligne à exporter", "ERREUR", JOptionPane.ERROR_MESSAGE);
-        
+            JOptionPane.showMessageDialog(ecran, "Aucune ligne à exporter", "ERREUR", JOptionPane.ERROR_MESSAGE);
         } else {
+            //Choix du fichier par l'utilisateur
             JFileChooser Filechoose = new JFileChooser();
             Filechoose.setDialogTitle("Indiquez ou enregistrer le fichier");
             int userSelection = Filechoose.showSaveDialog(this);
+
             if (userSelection == JFileChooser.APPROVE_OPTION) {
                 File Chemin = Filechoose.getSelectedFile();
 
-                //Ecriture de notre fichier CSV
+                //Ecriture du fichier CSV
                 try {
-                    FileWriter fw = new FileWriter(Chemin);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    
-                    //Ecriture de notre ligne d'entête
-                    bw.write("Numero_vol;Nom_Compagnie;Date_Depart;Ville_Arrivee;Nombre_Passagers;Nombre_Personne;Total_Personne;Vol_Direct");
-                    bw.newLine();;
-                    
-                    //Parcours de nos lignes et colonnes
-                    for (int r = 0; r < Table.getRowCount(); r++) {
-                        for (int c = 0; c < Table.getColumnCount(); c++) {
-
-                            //Ecriture
-                            bw.write(Table.getValueAt(r, c).toString() + ";");
-                        }
-                        //Creation d'une nouvelle ligne quand la dernière colonne est parcourrue
-                        bw.newLine();
-
-                    }
-                    JOptionPane.showMessageDialog(this, "Fichier exporté", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
-                    bw.close();
-                    fw.close();
-
+                    Export E = new Export(Chemin);
+                    E.Ecrit(Table);
                 } catch (IOException exception) {
                     JOptionPane.showMessageDialog(this, "Exportation impossible", "ERREUR", JOptionPane.ERROR_MESSAGE);
+
                 }
-
             }
-        }
 
+        }
     }//GEN-LAST:event_ExportActionPerformed
 
     private void AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnulerActionPerformed
@@ -767,7 +732,7 @@ public class Interface extends javax.swing.JFrame{
 
         //Gestion du panneau
         Panneau.setText("SAISIR UN NOUVEAU VOL :");
-        
+
         //Reset formulaire
         Numvol.setText("Numéro de vol");
         NomComp.setText("Nom Compagnie");
@@ -787,94 +752,62 @@ public class Interface extends javax.swing.JFrame{
 
     private void RechercheTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RechercheTextKeyReleased
         // TODO add your handling code here:
-        String filtre=RechercheText.getText();
-        
+        String filtre = RechercheText.getText();
+        Recherche R = new Recherche(Table);
 
         //Cas de recherche général, utilisation du filtre sans index 
-        if(Select.getSelectedItem().equals("Général")) filtreRecherche(filtre);
-        
-        
-        //Cas de recherche dans une colonne en particulier
-        else if (Select.getSelectedItem().equals("Nom_Compagnie")) filtreIndex(filtre,1);
-        else if (Select.getSelectedItem().equals("Date_Depart")) filtreIndex(filtre,2);
-        else if (Select.getSelectedItem().equals("Ville_Arrivee")) filtreIndex(filtre,3);
-        else if (Select.getSelectedItem().equals("Nb_Passagers")) filtreIndex(filtre,4);
-        else if (Select.getSelectedItem().equals("Nb_Personnel")) filtreIndex(filtre,5);
-        else if (Select.getSelectedItem().equals("Total_Personnes")) filtreIndex(filtre,6);
-        
-        
-        
-        
+        if (Select.getSelectedItem().equals("Général")) {
+            R.filtreRecherche(filtre);
+        } //Cas de recherche dans une colonne en particulier
+        else if (Select.getSelectedItem().equals("Nom_Compagnie")) {
+            R.filtreIndex(filtre, 1);
+        } else if (Select.getSelectedItem().equals("Date_Depart")) {
+            R.filtreIndex(filtre, 2);
+        } else if (Select.getSelectedItem().equals("Ville_Arrivee")) {
+            R.filtreIndex(filtre, 3);
+        } else if (Select.getSelectedItem().equals("Nb_Passagers")) {
+            R.filtreIndex(filtre, 4);
+        } else if (Select.getSelectedItem().equals("Nb_Personnel")) {
+            R.filtreIndex(filtre, 5);
+        } else if (Select.getSelectedItem().equals("Total_Personnes")) {
+            R.filtreIndex(filtre, 6);
+        }
+
     }//GEN-LAST:event_RechercheTextKeyReleased
 
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
         // TODO add your handling code here:
-        
+
+        //Choix du fichier par l'utilisateur
+        Import I, J;
         JFileChooser Filechoose = new JFileChooser();
         Filechoose.setDialogTitle("Indiquez le fichier à importer");
         int userSelection = Filechoose.showOpenDialog(this);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File Chemin = Filechoose.getSelectedFile();
-            
-        
-        //Cas d'usage : choix de suppression de la JTable déjà existante    
-        int reponse = JOptionPane.showConfirmDialog(this,"Voulez vous écraser les données déja existantes ?");
-        if (reponse == JOptionPane.YES_OPTION) {  
-            
-            try {
-                //Suppression de la tabe déja existante
-                tblmodel = (DefaultTableModel) Table.getModel();
-                for (int i = tblmodel.getRowCount() - 1; i >= 0; i--) {
-                    tblmodel.removeRow(i);
+
+            //Cas : choix de suppression de la JTable déjà existante    
+            int reponse = JOptionPane.showConfirmDialog(this, "Voulez vous écraser les données déja existantes ?");
+            if (reponse == JOptionPane.YES_OPTION) {
+                try {
+                    //Suppression et import de la tabe déja existante
+                    I = new Import(Chemin, this.Table);
+                    I.Ecraser(Table);
+                } catch (IOException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                //Import de la nouvelle table
-                BufferedReader br = new BufferedReader(new FileReader(Chemin));
-                tblmodel = (DefaultTableModel) Table.getModel();
-
-                //On recupere les lignes du fichier csv
-                Object[] tabligne = br.lines().toArray();
-
-                //Recuperation des données (à partir de 1, 0 étant les entêtes)
-                for (int i = 1; i < tabligne.length; i++) {
-                    String line = tabligne[i].toString();
-                    String[] donnees = line.split(";");
-                    //Affectation a notre Table les lignes du fichier 
-                    tblmodel.addRow(donnees);
+            } //Cas : ajout de la table à une table existante
+            else {
+                try {
+                    //Import de la nouvelle table en plus de ce qui est présent
+                    J = new Import(Chemin, this.Table);
+                    J.Importer(Table);
+                } catch (IOException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //tblmodel = (DefaultTableModel) Table.getModel();
-
-            } catch (FileNotFoundException ex) {
-                JOptionPane.showMessageDialog(this, "Importation impossible", "ERREUR", JOptionPane.ERROR_MESSAGE);
-            }
-           
-        }
-        
-        else{
-            try {
-
-                BufferedReader br = new BufferedReader(new FileReader(Chemin));
-                tblmodel = (DefaultTableModel) Table.getModel();
-
-                //On recupere les lignes du fichier csv
-                Object[] tabligne = br.lines().toArray();
-
-                //Recuperation des données (à partir de 1, 0 étant les entêtes)
-                for (int i = 1; i < tabligne.length; i++) {
-                    String line = tabligne[i].toString();
-                    String[] donnees = line.split(";");
-                    //Affectation a notre Table les lignes du fichier 
-                    tblmodel.addRow(donnees);
-                }
-
-            } catch (FileNotFoundException ex) {
-                JOptionPane.showMessageDialog(this, "Importation impossible", "ERREUR", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }
-        
-        
-                
+
     }//GEN-LAST:event_ImportActionPerformed
 
     private void RechercheNumVolTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheNumVolTextActionPerformed
@@ -883,53 +816,38 @@ public class Interface extends javax.swing.JFrame{
 
     private void RechercheNumVolTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RechercheNumVolTextKeyReleased
         // TODO add your handling code here:
-        String filtre=RechercheNumVolText.getText();
-        filtreIndex(filtre,0);
+        Recherche N = new Recherche(Table);
+        String filtre = RechercheNumVolText.getText();
+        N.filtreIndex(filtre, 0);
     }//GEN-LAST:event_RechercheNumVolTextKeyReleased
 
     private void FiltreDirectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltreDirectActionPerformed
         // TODO add your handling code here:
-        if (FiltreDirect.isSelected()){filtreIndex("true",7); FiltreEscale.setEnabled(false); }
-        else {filtreRecherche("");FiltreEscale.setEnabled(true);}
+        Recherche D = new Recherche(Table);
+        if (FiltreDirect.isSelected()) {
+            D.filtreIndex("true", 7);
+            FiltreEscale.setEnabled(false);
+        } else {
+            D.filtreRecherche("");
+            FiltreEscale.setEnabled(true);
+        }
     }//GEN-LAST:event_FiltreDirectActionPerformed
 
     private void FiltreEscaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltreEscaleActionPerformed
         // TODO add your handling code here:
-        if (FiltreEscale.isSelected()) {filtreIndex("false",7); FiltreDirect.setEnabled(false); }
-        else {filtreRecherche("");FiltreDirect.setEnabled(true);}
+        Recherche E = new Recherche(Table);
+        if (FiltreEscale.isSelected()) {
+            E.filtreIndex("false", 7);
+            FiltreDirect.setEnabled(false);
+        } else {
+            E.filtreRecherche("");
+            FiltreDirect.setEnabled(true);
+        }
     }//GEN-LAST:event_FiltreEscaleActionPerformed
-    
-    //Cas recherche colonne particuliere 
-    void filtreIndex(String filtre, int column){
-        
-        tblmodel = (DefaultTableModel) Table.getModel();
-        
-        //Création puis affectation du tableau trié avec la chaine de caractère 'filtre'
-        TableRowSorter<DefaultTableModel> tablerow = new TableRowSorter<>(tblmodel);
-        Table.setRowSorter(tablerow);
-        tablerow.setRowFilter(RowFilter.regexFilter(filtre, column));
-        
-        
-    }
-    
-    //Cas recherche general
-    void filtreRecherche(String filtre){
-        
-        tblmodel = (DefaultTableModel) Table.getModel();
-        
-        //Création puis affectation du tableau trié avec la chaine de caractère 'filtre'
-        TableRowSorter<DefaultTableModel> tablerow = new TableRowSorter<>(tblmodel);
-        Table.setRowSorter(tablerow);
-        tablerow.setRowFilter(RowFilter.regexFilter(filtre));
-        
-    }
-    
-    
+
     /**
      * @param args the command line arguments
      */
-    
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -957,10 +875,8 @@ public class Interface extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(() -> {
             new Interface().setVisible(true);
         });
-        
+
     }
-    
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ajouter;
@@ -994,5 +910,4 @@ public class Interface extends javax.swing.JFrame{
     // End of variables declaration//GEN-END:variables
     public JFrame ecran;
     public DefaultTableModel tblmodel;
-
 }
